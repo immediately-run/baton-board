@@ -16,10 +16,10 @@ import App from './App';
 import { COMPONENTS } from './components';
 
 // The cast is needed for two reasons that are not the board's props: `GROVE_MDX`'s own
-// stock components carry REQUIRED props (\`KeyValue\`'s `pairs`, \`DocsByTag\`'s `tag`), so the
+// stock components carry REQUIRED props (`KeyValue`'s `pairs`, `DocsByTag`'s `tag`), so the
 // composed map cannot be a `Record<string, FC>` as it stands; and `extendComponents`
 // returns `T & Record<string, unknown>`, so its type says nothing about the additions.
 // The board's ten names are type-checked where they are ADDED — `src/components.ts`
-// writes the additions object with `satisfies Record<string, FC>` (round 1, 1-A-0),
+// writes the additions object with `satisfies Record<string, FC>` (round 1, 1-A-1),
 // so a component that is not an FC, or a name added without an import, fails `tsc`.
 boot({ mdxComponents: COMPONENTS as unknown as MdxComponents, children: <App /> });
