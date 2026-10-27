@@ -15,14 +15,11 @@ import type { MdxComponents } from '@immediately-run/sdk';
 import App from './App';
 import { COMPONENTS } from './components';
 
-// The cast is the one place this package loosens the SDK's types, and only in
-// the direction React already accepts: `MdxComponents` is `Record<string, FC>`,
-// so a component whose props are ALL optional — which every component here is,
-// bar `InlineProse`'s required `text`, and that one is not in the map — fails
-// `FC`'s `PropsWithChildren<P>` check under `strictFunctionTypes`. MDX renders
-// a component either as `<Name />`, with no props at all, or with exactly the
-// attributes the ticket wrote; both are compatible with these signatures at
-// runtime. The ten names themselves are still type-checked against Grove and the
-// SDK by `src/components.ts` — this cast does not hide whether a component
-// exists or what it renders, only the contravariance of its optional props.
+// The cast is needed for two reasons that are not the board's props: `GROVE_MDX`'s own
+// stock components carry REQUIRED props (\`KeyValue\`'s `pairs`, \`DocsByTag\`'s `tag`), so the
+// composed map cannot be a `Record<string, FC>` as it stands; and `extendComponents`
+// returns `T & Record<string, unknown>`, so its type says nothing about the additions.
+// The board's ten names are type-checked where they are ADDED — `src/components.ts`
+// writes the additions object with `satisfies Record<string, FC>` (round 1, 1-A-0),
+// so a component that is not an FC, or a name added without an import, fails `tsc`.
 boot({ mdxComponents: COMPONENTS as unknown as MdxComponents, children: <App /> });

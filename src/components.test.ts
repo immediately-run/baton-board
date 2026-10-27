@@ -9,8 +9,8 @@
 // it by construction and could never fail.
 //
 // Grove ships TSX source with no declarations of its own, so it is imported by
-// name like any other module and vitest compiles it (see `vitest.config.ts`).
-// The identity asserted below is then literally the map the engine spreads.
+// name like any other module and vitest's defaults compile it. The identity
+// asserted below is then literally the map the engine spreads.
 import { describe, expect, it } from 'vitest';
 import { GROVE_MDX } from '@immediately-run/grove';
 import { COMPONENTS } from './components';
