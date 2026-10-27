@@ -1,0 +1,40 @@
+{
+  "name": "@immediately-run/baton-board",
+  "private": true,
+  "version": "1.0.0",
+  "main": "src/main.tsx",
+  "type": "module",
+  "description": "The ticket-wiki viewer: Baton's board components, once, as an ordinary immediately.run app on the Grove thin shell.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/immediately-run/baton-board.git"
+  },
+  "immediately.run": {
+    "$schema": "https://immediately.run/immediately-run-config.schema.json",
+    "render": "app",
+    "opens": [
+      {
+        "app": "self",
+        "version": "^1"
+      }
+    ]
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@immediately-run/grove": "github:immediately-run/grove#a11354341d02a659c86d276c82e5408c11744df2",
+    "@immediately-run/mdx-plugins": "0.7.1",
+    "@immediately-run/sdk": "^0.80.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "~6.0.2",
+    "vitest": "^4.1.9"
+  }
+}
