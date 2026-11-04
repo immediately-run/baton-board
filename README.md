@@ -12,9 +12,9 @@ A ticket repository stays a plain `render: safe` wiki whose marker names this ap
 ```
 
 The marker's `version` is the exact bundle-format version, never a range. The range is this
-app's own `opens` entry (`"^1"` in `package.json`), and the host checks the marker's version
-against it. A range in the marker matches nothing, so the host renders the bundle as plain
-files (`BUNDLE_EMBEDDING_SPEC` §4b.1).
+app's own `opens` entry (`^1` in `package.json`), and the host checks the marker's version
+against it. The host refuses a range in the marker and renders the bundle as plain files
+(`BUNDLE_EMBEDDING_SPEC` §4b.1).
 
 The corpus then contributes **data only** — frontmatter, records, markdown — and the
 components render in this app's frame with this app's authority. That keeps the platform's
