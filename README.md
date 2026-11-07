@@ -60,15 +60,18 @@ Two things changed in the move and nothing else did:
 ## Dependencies
 
 ```json
-"@immediately-run/grove": "github:immediately-run/grove#a11354341d02a659c86d276c82e5408c11744df2",
-"@immediately-run/sdk": "^0.80.0",
+"@immediately-run/grove": "github:immediately-run/grove#33391ef4ae643105e5b35f9db2959dd3eb55fb84",
+"@immediately-run/sdk": "^0.93.0",
 "react": "^19.2.5",
 "react-dom": "^19.2.5"
 ```
 
 Grove is pinned **by commit**, never a branch: `LIBRARY_MOUNTS_SPEC §6/§7` makes a
 commit-pinned ref immutable and cache-first, so this app is reproducible and fast. The pin
-is the commit that carries `extendComponents` (Grove R3-1290, package version 0.2.9).
+is the merge of grove#105 (package version 0.2.11) — the first commit whose cache zip was
+built with `libraryArtifacts: true` (R3-1345): its zip carries `files[].library`, the
+mounted-path variants the sandbox seeds for a git library (R3-1343), so grove's modules
+run from the cached zip instead of cold-transpiling on every boot.
 
 The SDK line is not decoration. Grove declares the SDK and React in both `dependencies` and
 `peerDependencies`; a shell whose range does not satisfy the engine's peer gets **no**
