@@ -64,7 +64,6 @@ Two things changed in the move and nothing else did:
 "@immediately-run/sdk": "^0.93.0",
 "react": "^19.2.5",
 "react-dom": "^19.2.5"
-}
 ```
 
 Grove is pinned **by commit**, never a branch: `LIBRARY_MOUNTS_SPEC §6/§7` makes a
